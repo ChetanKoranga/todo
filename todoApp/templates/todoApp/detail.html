@@ -1,0 +1,15 @@
+{% extends 'todoApp/base.html' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <h5><strong>Title:</strong>&nbsp {{current_todo.title}}</h5>
+    </div>
+    <div class="card">
+        <h5><strong>Text:</strong>&nbsp {{current_todo.text}}</h5>
+    </div>
+    <div class="card">
+        <h5><strong>Todo Creation time:</strong>&nbsp {{current_todo.created_at}}</h5>
+    </div>
+</div>
+{% endblock %}

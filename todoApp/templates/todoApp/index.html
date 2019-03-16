@@ -1,0 +1,48 @@
+{% extends "todoApp/base.html" %}
+
+{% block title %}todo{% endblock %}
+
+{% block body %}
+<div class="todo-containcontainer">
+    <div class="card">
+        <table class="table">
+            <thead class="thead-dark">
+            <th>Title</th>
+            <th>Status</th>
+            <th>Created Date/TIme</th>
+            <th>Edit</th>
+            </thead>
+            <tbody>
+            {% for list in all_todo %}
+            <tr>
+                <td>{{list.title}}</td>
+                <td>
+                  {% if list.status %}
+                    &nbsp <ion-icon size='large' name="checkbox-outline"></ion-icon>
+                  {% else %}
+                    &nbsp <ion-icon size="large" name="close-circle-outline"></ion-icon>
+                  {% endif %}
+                </td>
+                <td>{{list.created_at}}</td>
+                <td>
+                    <div class="col">
+                        <form class="form" action="{% url 'todo:detail' list.id %}">
+                            <div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
+                        <form class="form" action="#">
+                            <div style="display:inline">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
